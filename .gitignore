@@ -1,0 +1,13 @@
+# Generated Jupyter Book output
+_build/
+.jupyter_cache/
+.ipynb_checkpoints/
+# Python/IDE artifacts
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store
+
+# Evaluation dataset is downloaded locally rather than committed
+labs/data/

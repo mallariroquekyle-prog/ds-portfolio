@@ -1,0 +1,10 @@
+# Image Classification Using Pre-trained Models (new lab)
+torch
+torchvision
+pillow
+numpy
+pandas
+matplotlib
+scikit-learn
+ipython
+notebook

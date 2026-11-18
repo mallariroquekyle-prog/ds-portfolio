@@ -1,0 +1,16 @@
+# Jupyter Book version 1 settings (compatible with the course assignment)
+title: "Bear's Data Den"
+author: "Roque Kyle Mallari"
+copyright: "2026"
+only_build_toc_files: true
+execute:
+  execute_notebooks: "off" # display saved outputs; avoid re-running lesson code
+html:
+  favicon: "_static/bear-icon.svg"
+  use_repository_button: true
+  use_issues_button: false
+  use_edit_page_button: false
+repository:
+  url: "https://github.com/mallariroquekyle-prog/ds-portfolio"
+  path_to_book: ""
+  branch: "main"

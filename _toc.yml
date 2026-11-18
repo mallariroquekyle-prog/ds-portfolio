@@ -1,0 +1,23 @@
+format: jb-book
+root: intro
+parts:
+- caption: Completed Lab Activities
+  chapters:
+  - file: labs/Lab_Task_2_Forward_Pass
+  - file: labs/Lab_Task_3_Backpropagation
+  - file: labs/Lab_Task_4_PyTorch_Regression
+  - file: labs/Lab_Task_5_PyTorch_Tensors
+  - file: labs/Lab_Task_6_CNN_Example_Check_Diagram
+  - file: labs/Lab_Image_Classification_Pretrained_Models
+- caption: Deep Learning Modules
+  chapters:
+  - file: notebooks/00_Foundational Concept of Deep Learning
+  - file: notebooks/01_Understanding Deep Learning
+  - file: notebooks/02_PyTorch Basics
+  - file: notebooks/E - Applications of Deep Learning
+  - file: notebooks/E1 - CNN Implementation
+- caption: Additional Course Materials
+  chapters:
+  - file: notebooks/A - Foundational Concept of Deep Learning
+  - file: notebooks/B - Understanding Deep Learning
+  - file: notebooks/C - PyTorch Basics
