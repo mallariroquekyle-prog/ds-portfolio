@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="780" viewBox="0 0 900 780" role="img" aria-labelledby="title desc">
+<title id="title">Cozy cartoon bear study den</title><desc id="desc">Smiling tan cartoon bear sitting on a green rug with a laptop, studying near a stack of books, a plant, and playful stars.</desc>
+<defs>
+ <linearGradient id="bubble" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E8F5E7"/><stop offset="1" stop-color="#D8F0E8"/></linearGradient>
+ <linearGradient id="fur" x1="0" y1="0" x2="0.7" y2="1"><stop stop-color="#D6A071"/><stop offset="1" stop-color="#BA815C"/></linearGradient>
+ <linearGradient id="latte" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF6D6"/><stop offset="1" stop-color="#F6DEBC"/></linearGradient>
+ <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#809D84" flood-opacity=".18"/></filter>
+</defs>
+<!-- Background pastel blob -->
+<path d="M155 158C205 82 345 44 483 62c165 22 268 55 301 172 28 98-1 226-93 332-78 90-250 133-397 102C143 637 65 542 78 393c8-95 26-157 77-235Z" fill="url(#bubble)"/>
+<path d="M147 262c-40 94-37 224 33 307" fill="none" stroke="#D0E9D8" stroke-width="20" stroke-linecap="round" opacity=".7"/>
+<!-- Clouds -->
+<path d="M620 187h121c22 0 35-23 21-41-9-12-20-15-32-11-10-23-39-30-57-11-20-8-41 5-42 26-22-6-38 11-31 25 3 8 10 12 20 12Z" fill="#fffef4"/>
+<path d="M125 215h110c20 0 28-20 17-31-9-9-21-10-30-7-13-21-37-20-49-7-23-5-39 18-27 34-18-4-32 11-21 11Z" fill="#fffdf5"/>
+<!-- stars and flowers -->
+<path d="m633 84 12 24 24 12-24 11-12 25-11-25-24-11 24-12Z" fill="#F5D68B" stroke="#EDBC68" stroke-width="4"/>
+<path d="m249 113 6 14 14 6-14 6-6 14-6-14-14-6 14-6Z" fill="#F2B2A0"/>
+<path d="m750 285 6 14 14 6-14 6-6 14-6-14-14-6 14-6Z" fill="#F7D385"/>
+<circle cx="216" cy="333" r="8" fill="#F5C2B8"/><circle cx="697" cy="339" r="7" fill="#F5C2B8"/>
+<!-- Rug -->
+<ellipse cx="453" cy="662" rx="338" ry="70" fill="#BFDCC9"/>
+<ellipse cx="453" cy="652" rx="302" ry="56" fill="#D7E9CE"/>
+<path d="M234 648c101 44 310 51 445 7" stroke="#A6CEB7" stroke-width="4" stroke-dasharray="10 18" stroke-linecap="round"/>
+<!-- Ground decorations books -->
+<g stroke="#7E8F7F" stroke-width="3" stroke-linejoin="round">
+<path d="M139 576h129v24H139Z" fill="#F8D2BE"/><path d="M148 600h128v25H148Z" fill="#A9D8CE"/><path d="M129 626h151v26H129Z" fill="#F5D38A"/>
+<path d="M150 577v23M160 601v24M145 627v24" stroke="#fff9e7" stroke-width="5"/>
+</g>
+<g transform="translate(696 514)">
+ <rect x="-7" y="77" width="67" height="49" rx="11" fill="#F6C3AD" stroke="#D99783" stroke-width="4"/>
+ <path d="M27 82V20" stroke="#638D6D" stroke-width="7" stroke-linecap="round"/>
+ <path d="M28 58C-28 42-31 13-11 6 13 4 27 31 28 58ZM31 44C74 25 86-12 61-19 35-17 23 15 31 44Z" fill="#88B996" stroke="#5F997B" stroke-width="3"/>
+</g>
+<!-- Bear's feet below body -->
+<g stroke="#955F49" stroke-width="5">
+ <ellipse cx="332" cy="608" rx="76" ry="58" fill="#BA825C" transform="rotate(-19 332 608)"/>
+ <ellipse cx="568" cy="608" rx="76" ry="58" fill="#BA825C" transform="rotate(19 568 608)"/>
+ <ellipse cx="313" cy="615" rx="47" ry="28" fill="#F7E1BD" transform="rotate(-19 313 615)" stroke="none"/>
+ <ellipse cx="588" cy="615" rx="47" ry="28" fill="#F7E1BD" transform="rotate(19 588 615)" stroke="none"/>
+</g>
+<!-- Ears -->
+<g filter="url(#sh)">
+ <circle cx="321" cy="246" r="67" fill="#BA825C" stroke="#965E46" stroke-width="6"/>
+ <circle cx="573" cy="246" r="67" fill="#BA825C" stroke="#965E46" stroke-width="6"/>
+ <circle cx="321" cy="250" r="37" fill="#ECAAA1"/><circle cx="573" cy="250" r="37" fill="#ECAAA1"/>
+</g>
+<!-- Main bear body -->
+<ellipse cx="448" cy="488" rx="210" ry="183" fill="url(#fur)" stroke="#975F45" stroke-width="6"/>
+<ellipse cx="450" cy="501" rx="148" ry="138" fill="url(#latte)"/>
+<!-- Head -->
+<ellipse cx="448" cy="299" rx="165" ry="159" fill="url(#fur)" stroke="#975F45" stroke-width="6"/>
+<!-- Face patch and cheeks -->
+<ellipse cx="446" cy="352" rx="118" ry="87" fill="#FBEBD0"/>
+<ellipse cx="355" cy="341" rx="23" ry="14" fill="#EEB0A5" opacity=".85"/>
+<ellipse cx="536" cy="341" rx="23" ry="14" fill="#EEB0A5" opacity=".85"/>
+<path d="M364 306q21-27 43 0" fill="none" stroke="#744638" stroke-width="8" stroke-linecap="round"/>
+<path d="M488 306q21-27 43 0" fill="none" stroke="#744638" stroke-width="8" stroke-linecap="round"/>
+<path d="M435 338q13-12 26 0l-13 13Z" fill="#744638" stroke="#744638" stroke-linejoin="round" stroke-width="5"/>
+<path d="M448 352v12m0 0q-15 21-33 6m33-6q15 21 33 6" fill="none" stroke="#744638" stroke-width="5" stroke-linecap="round"/>
+<!-- Arms holding laptop -->
+<ellipse cx="280" cy="473" rx="64" ry="104" transform="rotate(-28 280 473)" fill="#C78E64" stroke="#975F45" stroke-width="5"/>
+<ellipse cx="615" cy="473" rx="64" ry="104" transform="rotate(28 615 473)" fill="#C78E64" stroke="#975F45" stroke-width="5"/>
+<!-- Laptop -->
+<g filter="url(#sh)">
+ <path d="M341 439h216q19 0 16 22l-19 128H359l-34-128q-4-22 16-22Z" fill="#93B8A9" stroke="#477A6B" stroke-width="6"/>
+ <path d="M328 591h241l19 20q6 8-7 8H321q-11 0-6-8Z" fill="#648E7C" stroke="#426B5B" stroke-width="5"/>
+ <circle cx="451" cy="516" r="25" fill="#F7E3BB"/>
+ <path d="M440 517q11 10 23 0" stroke="#6A8A71" stroke-linecap="round" stroke-width="5"/>
+ <circle cx="441" cy="509" r="3" fill="#6A8A71"/><circle cx="461" cy="509" r="3" fill="#6A8A71"/>
+</g>
+<!-- Sleeve paws -->
+<ellipse cx="303" cy="529" rx="43" ry="30" transform="rotate(14 303 529)" fill="#C78E64" stroke="#965F45" stroke-width="4"/>
+<ellipse cx="589" cy="529" rx="43" ry="30" transform="rotate(-14 589 529)" fill="#C78E64" stroke="#965F45" stroke-width="4"/>
+<path d="m288 526 4 10m14-11 4 10m272-10-4 10m-14-9-4 10" stroke="#975F45" stroke-linecap="round" stroke-width="3"/>
+<!-- Floaty heart -->
+<path d="M654 372C646 356 623 359 619 375c-2 16 15 29 35 43 21-14 37-27 35-43-4-16-27-19-35-3Z" fill="#F5AFAE"/>
+<g font-family="Trebuchet MS, Segoe UI, sans-serif" font-weight="900" fill="#82A98C">
+ <text x="646" y="240" font-size="22" transform="rotate(12 646 240)">zzz...</text>
+</g>
+</svg>

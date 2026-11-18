@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="300" viewBox="0 0 340 300" role="img" aria-label="Cute waving brown bear illustration">
+<ellipse cx="170" cy="277" rx="145" ry="19" fill="#E8CBB3"/>
+<circle cx="99" cy="90" r="38" fill="#B7825F" stroke="#97694E" stroke-width="4"/>
+<circle cx="235" cy="90" r="38" fill="#B7825F" stroke="#97694E" stroke-width="4"/>
+<circle cx="99" cy="90" r="19" fill="#EFB4A6"/><circle cx="235" cy="90" r="19" fill="#EFB4A6"/>
+<ellipse cx="170" cy="214" rx="112" ry="85" fill="#C98E67" stroke="#9C694F" stroke-width="5"/>
+<ellipse cx="170" cy="225" rx="66" ry="51" fill="#FFEAC9"/>
+<ellipse cx="165" cy="114" rx="112" ry="106" fill="#C98E67" stroke="#9C694F" stroke-width="5"/>
+<ellipse cx="166" cy="151" rx="76" ry="54" fill="#FFF0D1"/>
+<path d="M105 116q16-19 31 0m55 0q16-19 31 0" stroke="#784B3B" stroke-width="6" stroke-linecap="round" fill="none"/>
+<ellipse cx="107" cy="147" rx="15" ry="10" fill="#F0AC9D"/><ellipse cx="224" cy="147" rx="15" ry="10" fill="#F0AC9D"/>
+<path d="m154 144q12-11 24 0l-12 10Z" fill="#784B3B"/><path d="M165 153q-13 17-26 5m26-5q13 17 26 5" stroke="#784B3B" stroke-width="4" stroke-linecap="round" fill="none"/>
+<ellipse cx="81" cy="215" rx="31" ry="57" transform="rotate(-24 81 215)" fill="#C98E67" stroke="#9C694F" stroke-width="4"/>
+<ellipse cx="266" cy="169" rx="28" ry="63" transform="rotate(-32 266 169)" fill="#C98E67" stroke="#9C694F" stroke-width="4"/>
+<path d="m276 104 15-17m-7 39 23-10m-16 31 28 2" stroke="#D89F66" stroke-width="6" stroke-linecap="round"/>
+<path d="M165 24c0 0 16-22 28 0" stroke="#FFE6A1" stroke-width="8" stroke-linecap="round"/>
+</svg>

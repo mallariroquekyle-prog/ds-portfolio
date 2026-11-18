@@ -1,0 +1,40 @@
+<svg width="900" height="720" viewBox="0 0 900 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cozy sleepy study lounge illustration">
+  <rect width="900" height="720" rx="36" fill="#10273A"/>
+  <circle cx="727" cy="120" r="44" fill="#F3E7BB" opacity="0.95"/>
+  <circle cx="660" cy="90" r="4" fill="#FFF7DA"/><circle cx="771" cy="63" r="3" fill="#FFF7DA"/>
+  <circle cx="812" cy="134" r="3.5" fill="#FFF7DA"/><circle cx="703" cy="176" r="2.5" fill="#FFF7DA"/>
+  <ellipse cx="456" cy="585" rx="312" ry="58" fill="#0B1D2B" opacity="0.45"/>
+  <rect x="585" y="396" width="144" height="92" rx="16" fill="#1A3850" stroke="#48687C" stroke-width="4"/>
+  <rect x="600" y="411" width="114" height="64" rx="10" fill="#F3E7BB" opacity="0.92"/>
+  <path d="M640 505H718" stroke="#48687C" stroke-width="10" stroke-linecap="round"/>
+  <path d="M530 500C554 446 602 398 668 386" stroke="#47657A" stroke-width="10" stroke-linecap="round" opacity="0.8"/>
+  <rect x="174" y="432" width="186" height="44" rx="22" fill="#DDA86E"/>
+  <rect x="196" y="404" width="32" height="30" rx="6" fill="#A3C4A0"/>
+  <rect x="234" y="392" width="28" height="42" rx="6" fill="#F1D378"/>
+  <rect x="268" y="398" width="34" height="36" rx="6" fill="#88BCD6"/>
+  <path d="M210 382C220 360 242 350 268 354C276 374 266 390 244 396" fill="#9AB98F"/>
+  <ellipse cx="395" cy="355" rx="165" ry="170" fill="#2A556D"/>
+  <ellipse cx="395" cy="402" rx="118" ry="96" fill="#F5EBC7"/>
+  <ellipse cx="328" cy="262" rx="46" ry="54" fill="#2A556D"/>
+  <ellipse cx="462" cy="262" rx="46" ry="54" fill="#2A556D"/>
+  <path d="M308 236L326 194L348 236" fill="#2A556D"/>
+  <path d="M442 236L464 194L482 236" fill="#2A556D"/>
+  <ellipse cx="351" cy="334" rx="14" ry="8" fill="#163247"/>
+  <ellipse cx="439" cy="334" rx="14" ry="8" fill="#163247"/>
+  <path d="M378 364C386 373 404 373 412 364" stroke="#163247" stroke-width="6" stroke-linecap="round"/>
+  <path d="M284 428C249 431 228 458 224 492" stroke="#2A556D" stroke-width="36" stroke-linecap="round"/>
+  <path d="M505 428C540 431 561 458 565 492" stroke="#2A556D" stroke-width="36" stroke-linecap="round"/>
+  <path d="M334 468C319 487 315 514 322 540" stroke="#2A556D" stroke-width="38" stroke-linecap="round"/>
+  <path d="M456 468C472 487 476 514 468 540" stroke="#2A556D" stroke-width="38" stroke-linecap="round"/>
+  <path d="M332 506C342 495 355 489 370 488" stroke="#F3E7BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M458 506C448 495 435 489 420 488" stroke="#F3E7BB" stroke-width="8" stroke-linecap="round"/>
+  <rect x="352" y="420" width="86" height="60" rx="12" fill="#173449" stroke="#48687C" stroke-width="4"/>
+  <rect x="365" y="432" width="60" height="34" rx="6" fill="#F3E7BB" opacity="0.95"/>
+  <circle cx="395" cy="449" r="6" fill="#2A556D"/>
+  <path d="M391 446L400 451L390 455" fill="#DDA86E"/>
+  <path d="M138 188C148 175 168 172 182 182" stroke="#F3E7BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M168 152C181 140 203 141 215 154" stroke="#F3E7BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M210 120C223 108 245 109 256 122" stroke="#F3E7BB" stroke-width="8" stroke-linecap="round"/>
+  <text x="116" y="238" fill="#F6F1DF" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="24" font-weight="700">sleepy study mode</text>
+  <text x="116" y="268" fill="#E7D89F" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="15">deep learning • quiet focus • cozy portfolio</text>
+</svg>

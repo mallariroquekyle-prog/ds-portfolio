@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>B — Understanding Deep Learning &#8212; Bear&#39;s Data Den</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3075747a" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/B - Understanding Deep Learning';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/theme-mascot.js?v=3d01f4d2"></script>
+    <link rel="icon" href="../_static/bear-icon.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C — PyTorch Basics" href="C%20-%20PyTorch%20Basics.html" />
+    <link rel="prev" title="A — Foundational Concept of Deep Learning" href="A%20-%20Foundational%20Concept%20of%20Deep%20Learning.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Bear's Data Den</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Bear’s Data Den
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Completed Lab Activities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/Lab_Task_2_Forward_Pass.html">Lab Task 2 — Single Forward Pass and Error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/Lab_Task_3_Backpropagation.html">Lab Task 3 — Forward and Backward Propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/Lab_Task_4_PyTorch_Regression.html">Lab Task 4 — PyTorch Regression Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/Lab_Task_5_PyTorch_Tensors.html">Lab Task 5 — NumPy and PyTorch Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/Lab_Task_6_CNN_Example_Check_Diagram.html">Lab Task 6 — PyTorch CNN Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/Lab_Image_Classification_Pretrained_Models.html">Laboratory Exercise — Image Classification Using Pre-trained Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning Modules</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_Foundational%20Concept%20of%20Deep%20Learning.html">00 — Foundational Concept of Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_Understanding%20Deep%20Learning.html">01 — Understanding Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_PyTorch%20Basics.html">02 — PyTorch Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E%20-%20Applications%20of%20Deep%20Learning.html">E — Applications of Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="E1%20-%20CNN%20Implementation.html">E1 — CNN Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Course Materials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A%20-%20Foundational%20Concept%20of%20Deep%20Learning.html">A — Foundational Concept of Deep Learning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">B — Understanding Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C%20-%20PyTorch%20Basics.html">C — PyTorch Basics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/mallariroquekyle-prog/ds-portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/B - Understanding Deep Learning.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>B — Understanding Deep Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="b-understanding-deep-learning">
+<h1>B — Understanding Deep Learning<a class="headerlink" href="#b-understanding-deep-learning" title="Link to this heading">#</a></h1>
+<h3 style="font-family: Times New Roman"><strong>II . Understanding Deep Learning</strong></h3>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">Having explored the historical background and inspiration behind deep learning, we can now delve into understanding the underlying mechanisms of this seemingly sci-fi technology. This journey will uncover how deep learning works, including the foundational concepts, methodologies, and real-world applications that make it a transformative force in modern technology.</p><h4 style="font-family: Times New Roman"><strong>Artificial Neural Network</strong></h4><p style="font-family:Times New Roman; text-align:justify; font-size:15px">Artificial Neural Networks (ANNs) consist of artificial neurons, known as <b>units</b>, organized into layers that form the entire network. These layers can range from having a few dozen units to millions, depending on the complexity required to learn hidden patterns in the data. Typically, an ANN includes an <b>input layer</b>, one or more <b>hidden layers</b>, and an <b>output layer</b>. The input layer receives external data for analysis, which is then processed through the hidden layers that transform the input into valuable information for the output layer. The output layer then generates a response based on the processed data.</p><center>
+    <img src="figures/example1.png" width="50%">
+</center><p style="font-family:Times New Roman; text-align:justify; font-size:15px">In most neural networks, units in different layers are interconnected, with each connection having a weight that determines the influence of one unit on another. As data flows through these connections, the neural network progressively learns from the data, ultimately producing an output from the output layer. </br > </br >Artificial neural networks are trained using a dataset. To teach an ANN to recognize a cat, it is presented with thousands of different cat images. The network learns to identify cats by analyzing these images. Once trained, the ANN is tested by classifying new images and determining whether they are cat images or not. The output is compared to a human-provided label. If the ANN misclassifies an image, backpropagation is used to refine the network's weights based on the error rate. This process iterates until the ANN can accurately recognize cat images with minimal errors.</p><h4 style="font-family: Times New Roman"><strong>Feedforward Neural Network</strong></h4><p style="font-family:Times New Roman; text-align:justify; font-size:15px">The feedforward neural network is one of the most basic artificial neural networks. In this ANN, the data or the input provided travels in a single direction. It enters into the ANN through the input layer and exits through the output layer while hidden layers may or may not exist. So the feedforward neural network has a front-propagated wave only and usually does not have backpropagation.</p><p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+    Assume that the neurons have a <b>sigmoid</b> activation function, perform a forward pass on the network. Assume that the actual output of $y$ is 1 and <b>learning rate</b> $\alpha$ is 0.9.
+<br>
+To calculate $H_1$, we need to calculate first the weighted sum of the input values added by the bias $\theta$.
+<br>
+$$Z = \sum_j{(w_{i,j} \cdot x_i)} + \theta_i$$
+$Z_1 = (w_{11} \cdot x_1) + (w_{13} \cdot x_2) + (w_{15} \cdot x_3) + \theta_1$
+<br>
+$Z_2 = (w_{12} \cdot x_1) + (w_{14} \cdot x_2) + (w_{16} \cdot x_3) + \theta_2$
+<br>
+<br>
+After computing the <b>weighted sum</b>, we introduce non-linearity to the output result by applying a nonlinear function. For this example, let's use <b>sigmoid function</b>.
+<br>
+$$\sigma = \frac{1}{1+e^{-Z_i}}$$
+$H_1 = \sigma(Z_1)$
+<br>
+$H_2 = \sigma(Z_2)$
+<br>
+<br>
+Now that we have computed the hidden layer's value, we can now proceed to computing the weighted sum for the output layer using the same procedure as how we compute the $Z_n$ and $H_n$.
+<br>
+<br>
+$Z_3 = (w_{21} \cdot H_1) + (w_{22} \cdot H_2) + \theta_3$
+<br>
+$\hat{y} = \sigma(Z_3)$
+<br>
+<br>
+This is how the calculations in a feedforward neural network are traversed from input to output.
+</p><div class="alert alert-block alert-success" style="font-family: Times New Roman">
+    <h4><strong>Laboratory Task 2</strong></h4>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+    <b>Instruction:</b> Perform a single forward pass and compute for the error.
+</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[y = \begin{bmatrix} 1 \end{bmatrix}\]</div>
+<div class="math notranslate nohighlight">
+\[f=max(0, Z_n)\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{hidden unit weights} = 
+\begin{bmatrix}
+w_{11} = 0.2 &amp;&amp; w_{12} = -0.3 \\
+w_{13} = 0.4 &amp;&amp; w_{14} = 0.1 \\
+w_{15} = -0.5 &amp;&amp; w_{16} = 0.2
+\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{output unit weights} = 
+\begin{bmatrix}
+w_{21} = -0.3 \\
+w_{22} = -0.2
+\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\theta = 
+\begin{bmatrix}
+\theta_{1} = -0.4 \\
+\theta_{2} = 0.2 \\
+\theta_{3} = 0.1
+\end{bmatrix}\end{split}\]</div>
+</div><h4 style="font-family: Times New Roman"><strong>Backward Propagation of Errors</strong></h4><p style="font-family:Times New Roman; text-align:justify; font-size:15px">Backward propagation a.k.a backprop or backward pass is a fundamental algorithm used for training artificial neural networks. It involves a two-step process: a forward pass and a backward pass. During the forward pass, input data is fed through the network, and the output is generated. The error, or the difference between the predicted output and the actual target, is then calculated. In the backward pass, this error is propagated back through the network, layer by layer, to update the weights and biases. This is done by computing the gradient of the loss function with respect to each weight using the chain rule of calculus. By iteratively adjusting the weights in the direction that reduces the error, backpropagation helps the network learn and improve its performance over time. This process continues until the network's predictions are sufficiently accurate or another stopping criterion is met.</p><p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+The initial value for $\hat{y}$ is not the optimal value since the parameters used were just randomly selected. Therefore, after the forward propagation, a backward propagation algorithm is employed to update the parameters ($w$ and $\theta$).
+<br>
+The error at the output layer is calculated as the difference between the predicted output ($\hat{y}$) and the actual output ($y$):
+<br>
+$$\delta = \hat{y} - y$$
+<br>
+Compute Hidden Layer Error ($\delta_h$)
+<br>
+$$\delta_h = (\delta_o W^T_o) \cdot \sigma'(Z_h)$$
+<br>
+Where:
+<br>
+<ul style="font-family:Times New Roman">
+    <li> $\sigma'(Z_h)$ is the derivative of the sigmoid activation function applied to the hidden layer activations $Z_h$:</li>
+    <li> $\sigma'(Z_h) = A_h \cdot (1 - A_h)$</li>
+    <li> $W^T_o$ is the transpose of the output weights matrix $W_o$.</li>
+</ul>
+</p>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+Calculate Gradients
+<br>
+Once we have the errors ($\delta_o$ and $\delta_h$), we compute the gradients of the error with respect to the weights ($W_o$ and $W_h$).
+<br>
+Gradients for Output Layer Weights ($\frac{\partial E}{\partial W_o}$)
+<br>
+$$\frac{\partial E}{\partial W_o} = A\frac{T}{h} \delta_o$$
+<br>
+Gradients for Hidden Layer Weights ($\frac{\partial E }{\partial W_h}$)
+<br>
+$$\frac{\partial E}{\partial W_h} = X^T \delta_h$$
+<br>
+Finally, the weights are updated using the gradients and the learning rate ($\alpha$).
+</p><div class="alert alert-block alert-success" style="font-family: Times New Roman">
+    <h4><strong>Laboratory Task 3</strong></h4>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+    <b>Instruction:</b> Perform a forward and backward propagation in python using the inputs from <b>Laboratory Task 2</b>
+</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># use relu as the activation function.</span>
+
+<span class="c1"># learning rate</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.001</span>
+</pre></div>
+</div>
+</div><h4 style="font-family: Times New Roman"><strong>Introduction to PyTorch</strong></h4><center><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Pytorch_logo.png?20211003060202" width="15%"></center>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">PyTorch is a powerful and widely-used open-source framework for deep learning, developed by Facebook's AI Research lab. It is designed to provide flexibility and speed for both research and production environments. PyTorch's primary strength lies in its dynamic computation graph, which allows for real-time changes and debugging, making it easier to experiment with new ideas. This is in contrast to static computation graphs used by other frameworks like TensorFlow. PyTorch supports a range of applications, from natural language processing to computer vision, through its extensive library of pre-built modules and tools. Additionally, its integration with Python makes it accessible to a large community of developers and researchers, fostering rapid development and collaboration. With a strong emphasis on simplicity and performance, PyTorch has become a go-to tool for many in the deep learning community.</p><p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>Setting up the Virtual Enviroment</strong></p><p style="font-family:Times New Roman; text-align:justify; font-size:15px">A virtual environment is a self-contained directory that isolates a specific Python environment, allowing users to manage dependencies and packages for different projects independently. This ensures that each project can have its own unique set of libraries and versions without conflicts, avoiding issues that arise from global installations. Virtual environments are particularly useful for maintaining consistent development environments, making it easier to manage project-specific dependencies and ensuring that applications run smoothly across different setups. Tools like <b>venv</b> and <b>virtualenv</b> facilitate the creation and management of these environments. We can create a virtual environment using either <b>pip</b> or <b>conda</b>.</p><ol style="font-family:Times New Roman; font-size:15px">
+    <strong><li>With PIP</li></strong>
+    <ul>
+        <li>Make sure that you have installed python and have its directory path added in the machine's environment variables.</li>
+        <li>Create a new folder, make sure that you know the directory of the new folder that you have created.</li>
+        <li>Open command prompt and change the directory to the new folder that you created.</li>
+        <li>Considering that you already have configured pip in the environment variables, you can now install libraries.</li>
+        <li>Run command <div class="custom-inline-code" class="cd">pip install virtualenv</div>.</li>
+        <li>You can create a virtual enviroment with a specific python version but only if the specific version is installed in your system.</li>
+        <li>Run command <div class="custom-inline-code">virtualenv -p /path/to/pythonX.X /path/to/new/virtual/environment</div></li>
+        <li>Replace <div class="custom-inline-code">/path/to/pythonX.X</div> with the path to the desired Python executable (e.g., <div class="custom-inline-code">/usr/bin/python3.8</div>) and <div class="custom-inline-code">/path/to/new/virtual/environment</div> with the path where you want to create the virtual environment.</li>
+        <li>Activate the virtual environment, make sure that you are inside the directory where the environment's folder is also under.</li>
+        <li>Run command <div class="custom-inline-code">env_name/Scripts/activate</div>.</li>
+        <li>Replace <div class="custom-inline-code">env_name</div> with the name of the environment you created.</li>
+    </ul>
+    <br>
+    <strong><li>With CONDA</li></strong>
+    <ul>
+        <li>Make sure that <a href="https://www.anaconda.com/">anaconda</a> is installed in you system.</li>
+        <li>Open anaconda prompt and run command <div class="custom-inline-code">conda create -n <myenv> python=3.X</div></li>
+        <li>Activate the environment by running the command <div class="custom-inline-code">conda activate env_name</div>.</li>
+        <li>Replace <div class="custom-inline-code">env_name</div> with the name of the environment you created.</li>
+    </ul>
+</ol><p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>PyTorch Installation</strong></p><ol style="font-family: Times New Roman; font-size:15px">
+    <li>Make sure that python is installed in your local device, the stable version of pytorch runs on python version 3.6 to 3.9. Make sure that your python version is in between this range. You can check the python version using command the command;</li>
+    <br>
+    <div class="custom-alert">
+        <div class="custom-code">python --version</div>
+    </div>
+    <br>
+    <li>Activate the virtual environment, for this demonstration, let's just use the conda virtual enviroment.</li>
+    <br>
+    <div class="custom-alert">
+        <div class="custom-code">conda activate env_name</div>
+    </div>
+    <br>
+    <li>Go to <a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a> and select appropriate machine configurations and copy the generated command. <br> If you have a CUDA enabled GPU, you can download and install CUDA toolkit version 11.8 or 12.1 first. Otherwise you may only select CPU.</li>
+    <br>
+    <center><img src="figures/torch.png" width="600px"></center>
+    <br>
+    <li>Paste the command in the anaconda prompt where you activated the virtual enviroment and wait patiently. <br> Just click <div class="custom-inline-code">Y</div> when prompted with a question to proceed installation.</li>
+    <br>
+    <center><img src="figures/torch2.png" width="600px"></center>
+</ol><h4 style="font-family: Times New Roman"><strong>PyTorch Components</strong></h4>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">Let's have linear regression as a case study to study the different components of PyTorch.  These are the following components we will be covering:</p>
+<ol style="font-family: Times New Roman; font-size:15px">
+    <li>Specifying input and target</li>
+    <li>Dataset and DataLoader</li>
+    <li><div class="custom-inline-code">nn.Linear</div> (Dense) </li>
+    <li>Define loss function</li>
+    <li>Define optimizer function</li>
+    <li>Train the model</li>
+</ol><p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+    Consider this data:
+    <br>
+    <img src="figures/japan.png" class="center" width="60%">
+    <br>
+    In a linear regression model, each target variable is estimated to be a weighted sum of the input variables, offset by some constant, known as a bias :
+    <br>
+    <br>
+$$\text{yield}_\text{apple}  = w_{11} \cdot \text{temp} + w_{12} \cdot \text{rainfall} + w_{13} \cdot \text{humidity} + b_{1}$$
+$$\text{yield}_\text{orange} = w_{21} \cdot \text{temp} + w_{22} \cdot \text{rainfall} + w_{23} \cdot \text{humidity} + b_{2}$$
+    <br>
+    Visually, it means that the yield of apples is a linear or planar function of temperature, rainfall and humidity:
+    <br>
+    <img src="figures/japan2.png" class="center" width="60%">
+    <br>
+    The learning part of linear regression is to figure out a set of weights <strong>w11, w12,... w23, b1 & b2</strong> using gradient descent.
+    <br>
+</p><p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>Sample Implementation</strong></p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'2.3.1'
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We can check whether we have gpu</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"cuda:0"</span> <span class="k">if</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">())</span> <span class="k">else</span> <span class="s2">"cpu"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Device: "</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device:  cuda:0
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>1. Specifiying input and target</strong></p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input (temp, rainfall, humidity)</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">43</span><span class="p">],</span> <span class="p">[</span><span class="mi">91</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mi">87</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">58</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span> <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">43</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mi">91</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mi">87</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">58</span><span class="p">],</span> <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">43</span><span class="p">],</span> <span class="p">[</span><span class="mi">91</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mi">87</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">58</span><span class="p">],</span> <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span> <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">70</span><span class="p">]],</span> 
+                   <span class="n">dtype</span><span class="o">=</span><span class="s1">'float32'</span><span class="p">)</span>
+
+<span class="c1"># Targets (apples, oranges)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">56</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">101</span><span class="p">],</span> <span class="p">[</span><span class="mi">119</span><span class="p">,</span> <span class="mi">133</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span> <span class="p">[</span><span class="mi">103</span><span class="p">,</span> <span class="mi">119</span><span class="p">],</span> <span class="p">[</span><span class="mi">56</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">101</span><span class="p">],</span> <span class="p">[</span><span class="mi">119</span><span class="p">,</span> <span class="mi">133</span><span class="p">],</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mi">103</span><span class="p">,</span> <span class="mi">119</span><span class="p">],</span> <span class="p">[</span><span class="mi">56</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span> <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">101</span><span class="p">],</span> 
+    <span class="p">[</span><span class="mi">119</span><span class="p">,</span> <span class="mi">133</span><span class="p">],</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span> <span class="p">[</span><span class="mi">103</span><span class="p">,</span> <span class="mi">119</span><span class="p">]],</span> 
+                   <span class="n">dtype</span><span class="o">=</span><span class="s1">'float32'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">targets</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([15, 3])
+torch.Size([15, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>2. Dataset and DataLoader</strong></p>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+    PyTorch provides two data primitives: <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader"><strong><tt>torch.utils.data.DataLoader</tt></strong></a> and <a href="https://pytorch.org/vision/0.18/datasets.html"><strong><tt>torch.utils.data.Dataset</tt></strong></a> that allow you to use pre-loaded datasets as well as your own data. Dataset stores the samples and their corresponding labels, and DataLoader wraps an iterable around the Dataset to enable easy access to the samples.
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorDataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define dataset</span>
+<span class="n">train_ds</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+<span class="n">train_ds</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[ 73.,  67.,  43.],
+         [ 91.,  88.,  64.],
+         [ 87., 134.,  58.]]),
+ tensor([[ 56.,  70.],
+         [ 81., 101.],
+         [119., 133.]]))
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+    We'll now create a <strong><tt>DataLoader</tt></strong>, which can split the data into batches of a predefined size while training. It also provides other utilities like shuffling and random sampling of the data.
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define data loader</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">train_dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_dl</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+The <strong><tt>DataLoader</tt></strong> is typically used in a for-in loop. Let's look at an example
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">train_dl</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yb</span><span class="p">)</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 73.,  67.,  43.],
+        [ 87., 134.,  58.],
+        [ 69.,  96.,  70.]])
+tensor([[ 56.,  70.],
+        [119., 133.],
+        [103., 119.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+    In each iteration, the data loader returns one batch of data, with the given batch size. If shuffle is set to True, it shuffles the training data before creating batches. Shuffling helps randomize the input to the optimization algorithm, which can lead to faster reduction in the loss.
+</p><p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>3. Define some Layer - <strong><tt>nn.Linear</tt></strong></strong></p>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+Instead of initializing the weights & biases manually, we can define the model using the <strong><tt>nn.Linear</tt></strong> class from PyTorch, which does it automatically.
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">seed_everything</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+  <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+  <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'PYTHONHASHSEED'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+  <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+  <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define model</span>
+
+<span class="n">seed_everything</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1">#nn.Linear assume this shape (in_features, out_features)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> <span class="c1"># (out_features, in_features)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> <span class="c1">#(out_features)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
+tensor([[ 0.4414,  0.4792, -0.1353],
+        [ 0.5304, -0.1265,  0.1165]], requires_grad=True)
+torch.Size([2, 3])
+Parameter containing:
+tensor([-0.2811,  0.3391], requires_grad=True)
+torch.Size([2])
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+In fact, our model is simply a function that performs a matrix multiplication of the <strong><tt>inputs</tt></strong> and the weights <strong><tt>w</tt></strong> and adds the bias <strong><tt>b</tt></strong> (for each observation)
+<br>
+<img src = "figures/dot.png" class="center" width="60%">
+<br>
+PyTorch models also have a helpful <strong><tt>.parameters</tt></strong> method, which returns a list containing all the weights and bias matrices present in the model. For our linear regression model, we have one weight matrix and one bias matrix.
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>  <span class="c1">#model.param returns a generator</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parameter containing:
+ tensor([[ 0.4414,  0.4792, -0.1353],
+         [ 0.5304, -0.1265,  0.1165]], requires_grad=True),
+ Parameter containing:
+ tensor([-0.2811,  0.3391], requires_grad=True)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#we can print the complexity by the number of parameters</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+We can use the <strong><tt>model(tensor)<tt></strong> API to perform a forward-pass that generate predictions.
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate predictions</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">preds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[58.2323, 35.5896],
+        [73.4005, 44.9262],
+        [94.4899, 36.2867],
+        [60.3437, 53.3070],
+        [66.7117, 32.9453],
+        [58.2323, 35.5896],
+        [73.4005, 44.9262],
+        [94.4899, 36.2867],
+        [60.3437, 53.3070],
+        [66.7117, 32.9453],
+        [58.2323, 35.5896],
+        [73.4005, 44.9262],
+        [94.4899, 36.2867],
+        [60.3437, 53.3070],
+        [66.7117, 32.9453]], grad_fn=&lt;AddmmBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>4. Define Loss Function</strong></p>
+<p>The <strong><tt>nn<tt></strong> module contains a lot of useful loss function like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criterion_mse</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">criterion_softmax_cross_entropy_loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mse</span> <span class="o">=</span> <span class="n">criterion_mse</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mse</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>  <span class="c1">##print out the loss number</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(2480.3708, grad_fn=&lt;MseLossBackward0&gt;)
+2480.370849609375
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>5. Define the Optimizer</strong></p>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+We use  <strong><tt>optim.SGD</tt></strong> to perform stochastic gradient descent where samples are selected in batches (often with random shuffling) instead of as a single group.  Note that  <strong><tt>model.parameters()</tt></strong> is passed as an argument to <strong><tt>optim.SGD</tt></strong>.
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define optimizer</span>
+<span class="c1">#momentum update the weight based on past gradients also, which will be useful for getting out of local max/min</span>
+<span class="c1">#If our momentum parameter was $0.9$, we would get our current grad + the multiplication of the gradient </span>
+<span class="c1">#from one time step ago by $0.9$, the one from two time steps ago by $0.9^2 = 0.81$, etc.</span>
+
+<span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px"><strong>6. Training - Putting Everything Together</strong></p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Utility function to train the model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">train_dl</span><span class="p">):</span>
+    
+    <span class="c1"># Repeat for given number of epochs</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+        
+        <span class="c1"># Train with batches of data</span>
+        <span class="k">for</span> <span class="n">xb</span><span class="p">,</span><span class="n">yb</span> <span class="ow">in</span> <span class="n">train_dl</span><span class="p">:</span>
+            
+            <span class="n">xb</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="c1">#move them to gpu if possible, if not, it will be cpu</span>
+            <span class="n">yb</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+                    
+            <span class="c1"># 1. Predict</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+                      
+            <span class="c1"># 2. Calculate loss</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
+            
+            <span class="c1"># 3. Calculate gradient</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>  <span class="c1">#if not, the gradients will accumulate</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            
+            <span class="c1"># Print out the gradients.</span>
+            <span class="c1"># print ('dL/dw: ', model.weight.grad) </span>
+            <span class="c1"># print ('dL/db: ', model.bias.grad)</span>
+            
+            <span class="c1"># 4. Update parameters using gradients</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            
+        <span class="c1"># Print the progress</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\r</span><span class="s2">Epoch [</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">], Loss: </span><span class="si">{:.4f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#train for 100 epochs</span>
+<span class="n">fit</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">criterion_mse</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">train_dl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/100], Loss: 0.97430
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate predictions</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">criterion_mse</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.9544596672058105
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 54.2758,  71.3443],
+        [ 79.3255, 101.8269],
+        [113.9149, 134.4432],
+        [ 17.1712,  38.2095],
+        [100.2865, 120.0920],
+        [ 54.2758,  71.3443],
+        [ 79.3255, 101.8269],
+        [113.9149, 134.4432],
+        [ 17.1712,  38.2095],
+        [100.2865, 120.0920],
+        [ 54.2758,  71.3443],
+        [ 79.3255, 101.8269],
+        [113.9149, 134.4432],
+        [ 17.1712,  38.2095],
+        [100.2865, 120.0920]], grad_fn=&lt;AddmmBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">targets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 56.,  70.],
+        [ 81., 101.],
+        [119., 133.],
+        [ 22.,  37.],
+        [103., 119.],
+        [ 56.,  70.],
+        [ 81., 101.],
+        [119., 133.],
+        [ 22.,  37.],
+        [103., 119.],
+        [ 56.,  70.],
+        [ 81., 101.],
+        [119., 133.],
+        [ 22.,  37.],
+        [103., 119.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success" style="font-family: Times New Roman">
+    <h4><strong>Laboratory Task 4</strong></h4>
+<p style="font-family:Times New Roman; text-align:justify; font-size:15px">
+    <b>Instruction:</b> Train a linear regression model in PyTorch using a regression dataset. Use the following parameters.
+</p>
+<ul>
+    <li>Criterion: MSE Loss</li>
+    <li>Fully Connected Layers x 2</li>
+    <li>Batch Size: 8</li>
+    <li>Optimizer: SGD</li>
+    <li>Epoch: 1000</li>
+</ul>
+</div></section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="A%20-%20Foundational%20Concept%20of%20Deep%20Learning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">A — Foundational Concept of Deep Learning</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="C%20-%20PyTorch%20Basics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">C — PyTorch Basics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Roque Kyle Mallari
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
